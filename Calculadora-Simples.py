@@ -1,5 +1,5 @@
 # Autor : Diogo Costa
-# Data : 2024-04-13
+# Data : 2024-04-13 
 # Descrição: Calculadora simples com interface gráfica
 
 # Importa a biblioteca tkinter
@@ -8,151 +8,111 @@ import tkinter as tk
 # Funções para as operações matemáticas
 def sum():
     try:
-        soma = float(entry1.get()) + float(entry2.get())
+        soma = eval(entry.get())
         result.config(text=str(soma))
-    except ValueError:
+    except:
         result.config(text="Invalid input")
-def sub():
-    try:
-        subtracao = float(entry1.get()) - float(entry2.get())
-        result.config(text=str(subtracao))
-    except ValueError:
-        result.config(text="Invalid input")
-def mult():
-    try:
-        multiplicacao = float(entry1.get()) * float(entry2.get())
-        result.config(text=str(multiplicacao))
-    except ValueError:
-        result.config(text="Invalid input")
-def div():
-    try:
-        divisao = float(entry1.get()) / float(entry2.get())
-        result.config(text=str(divisao))
-    except ZeroDivisionError:
-        result.config(text="Error:zero")
 
 # Interface da calculadora
 root = tk.Tk()
 root.title("Calculadora")
-root.geometry("200x225")
+root.geometry("225x343")  # Ajuste das dimensões da janela
 root.resizable(False, False)
-root.configure(background="#1D1615")
+root.configure(background="white")
+root.attributes("-alpha", 0.97, "-topmost", True)
 
 # Label do título
 label = tk.Label(
     root, 
     text="Calculadora", 
-    foreground="white", 
-    background="#1F1D1B", 
-    width=100, 
-    height=1, 
-    font=("Courier", 18, "bold"))
-label.pack()
-
-
-# Campos de entrada para os números
-entry1 = tk.Entry(root, justify='center',width=11,background="#E3E6E3",font=("bold"))
-entry2 = tk.Entry(root, justify='center',width=11,background="#E3E6E3",font=("bold"))
-
-# Labels para o primeiro número
-tk.Label(
-    root,
-    text="Primeiro número:",
-    font=("Aerial", 11),
-    foreground="white",
-    background="#1F1D1B",
-    width=13,
-    height=1,
-    ).pack()
-entry1.pack()
-
-#Espaçamento
-tk.Label(root, text="",background="#1D1615", font=("Courier", 3)).pack()
-
-# Frame para os botões
-frame_botoes = tk.Frame(root)
-frame_botoes.pack()
-
-#Espaçamento
-tk.Label(root, text="",background="#1D1615", font=("Courier", 3)).pack()
-
-# Label para o segundo número
-tk.Label(
-    root,
-    text="Segundo número:",
-    font=("Aerial", 11),
-    foreground="white",
-    background="#1F1D1B",
-    width=13,
-    height=1
-).pack()
-entry2.pack()
-
-# Botões para as operações
-# Soma
-button_sum = tk.Button(
-    frame_botoes,
-    text="+",
-    command=sum,
-    background= "#484547",
-    width=2,
-    
-    )
-button_sum.pack(side=tk.LEFT)
-
-# Subtração
-button_sub = tk.Button(
-    frame_botoes,
-    text="-",
-    command=sub,
-    background= "#484547",
-    width=2,
-    )
-button_sub.pack(side=tk.LEFT)
-
-# Multiplicação
-button_mult = tk.Button(
-    frame_botoes,
-    text="x",
-    command=mult,
-    background= "#484547",
-    width=2,
-    )
-button_mult.pack(side=tk.LEFT)
-
-# Divisão
-button_div = tk.Button(
-    frame_botoes,
-    text="÷",
-    command=div,
-    background= "#484547",
-    width=2,
-    )
-button_div.pack(side=tk.LEFT)
-
-# Label para o resultado
-result_label = tk.Label(
-    root,
-    text="=",
-    font=("Aerial", 11),
-    foreground="white",
-    background="#1F1D1B",
-    width=3,
-    height=1
+    foreground="#444", 
+    background="#f7f7f7",
+    height=2,
+    width=14, 
+    font=("Segoe UI", 20, "bold"),
+    borderwidth=1,  # Add borderwidth property
+    relief="raised"  # Add relief property
 )
-result_label.pack()
+label.grid(row=0, column=0, columnspan=5, pady=0, padx=0)
+
+# Campo de entrada para os números e operações
+entry = tk.Entry(
+    root,
+    justify='center',
+    width=25,
+    font=("Segoe UI", 12),
+    background="#f9f9f9",
+    foreground="black",
+    borderwidth=1,
+    relief="groove",
+    )
+entry.grid(row=1, column=0, columnspan=4, ipady=0, ipadx=0, pady=0, padx=0)
 
 # Resultado da conta
 result = tk.Label(
     root,
     text="",
-    font=("Aerial", 13),
+    justify='center',
+    font=("Segoe UI", 19, "bold"),
     foreground="black",
-    background="#E3E6E3",
-    width=9,
-    height=1
+    background="white",
+    borderwidth=1,
+    relief="groove",
+    width=15
 )
-result.pack()
+result.grid(row=2, column=0, columnspan=4, pady=0, padx=0, ipady=0, ipadx=0)
+
+# Botões para as operações
+buttons = [
+    ('C', 3, 0), ('%', 3, 1), ('÷', 3, 2), ('x', 3, 3),
+    ('7', 4, 0), ('8', 4, 1), ('9', 4, 2), ('-', 4, 3),
+    ('4', 5, 0), ('5', 5, 1), ('6', 5, 2), ('+', 5, 3),
+    ('1', 6, 0), ('2', 6, 1), ('3', 6, 2), ('=', 6, 3),
+    ('0', 7, 0), ('.', 7, 1), ('⌫', 7, 2)
+]
+
+for (text, row, column) in buttons:
+    button = tk.Button(
+        root,
+        text=text,
+        font=("opensans", 14, "bold" ),
+        foreground="#222",
+        background="grey",
+        width=3,
+        height=0,
+        command=lambda t=text: on_button_click(t),
+        borderwidth=1,
+        relief="groove",
+        highlightbackground="gray",  # Add highlightbackground property with the desired color
+        highlightthickness=1  # Add highlightthickness property with the desired thickness
+    )
+    if text == '=':
+        button.config(width=3, height=3)
+        button.grid(row=row, column=column, padx=0, pady=0, rowspan=2, columnspan=2)
+    else:
+        button.grid(row=row, column=column, padx=0, pady=1)
+
+# Função para clicar nos botões
+def on_button_click(value):
+    if value == '=':
+        try:
+            result.config(text=str(eval(entry.get())))
+        except:
+            result.config(text="Error")
+    elif value == 'C':
+        entry.delete(0, tk.END)
+        result.config(text="")
+    elif value == '⌫':
+        entry.delete(len(entry.get())-1, tk.END)
+    elif value == '%':
+        entry.insert(tk.END, '/100')
+    elif value == 'x':
+        entry.insert(tk.END, '*')
+    elif value == '÷':
+        entry.insert(tk.END, '/')
+    else:
+        entry.insert(tk.END, value)
+    
 
 #Finaliza a interface
 root.mainloop()
