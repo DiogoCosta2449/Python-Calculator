@@ -4,7 +4,7 @@ Calculator with graphical interface
 
 ## Features
 - `Calculator:` 
-Calculations of addition, subtraction, division, multiplication and percentage.
+Addition, subtraction, division, multiplication and percentage.
 
 <br>
 <div display: inline_block align="center">
