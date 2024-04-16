@@ -12,7 +12,7 @@ Addition, subtraction, division, multiplication and percentage.
 </div>
 
 ## :file_folder: Accessing the project
-You can use the [executable](https://github.com/DiogoCosta2449/Calculadora-Simples/blob/dev-calculadora/dist/Calculator.exe) or the [Python file](https://github.com/DiogoCosta2449/Calculadora-Simples/blob/dev-calculadora/Calculator.py).
+You can use the [executable](https://github.com/DiogoCosta2449/Calculadora-Simples/blob/dev-calculator/dist/Calculator.exe) or the [Python file](https://github.com/DiogoCosta2449/Calculadora-Simples/blob/dev-calculator/Calculator.py).
 ```bash
 python Calculator.py
 ```
