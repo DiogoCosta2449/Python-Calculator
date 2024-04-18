@@ -65,11 +65,8 @@ result = tk.Label(
 result.grid(row=2, column=0, columnspan=4, pady=0, padx=0, ipady=0, ipadx=0)
 
 # Menu bar
-# Variável de controle para o modo selecionado
 mode_var = tk.IntVar()
-mode_var.set(1)  # Define o modo padrão como 'Standard'
-
-# Menu bar
+mode_var.set(1)
 menu = tk.Menu(root)
 root.config(menu=menu)
 file_menu = tk.Menu(menu, tearoff=0)
